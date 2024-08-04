@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "https://unpkg.com/open-props/easings.min.css";
+
+/* Estilos para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 2px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos para el riel de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color de fondo del riel */
+}
+
+/* Estilos para el mango (thumb) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del mango */
+  border-radius: 4px; /* Radio de borde del mango */
+}
+
+/* Estilos para el mango (thumb) al pasar el cursor sobre él */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del mango al pasar el cursor */
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #fff, -20px 0 #fff2;
+    background: #fff;
+  }
+  33% {
+    box-shadow: 20px 0 #fff, -20px 0 #fff2;
+    background: #fff2;
+  }
+  66% {
+    box-shadow: 20px 0 #fff2, -20px 0 #fff;
+    background: #fff2;
+  }
+  100% {
+    box-shadow: 20px 0 #fff2, -20px 0 #fff;
+    background: #fff;
+  }
+}
+
+.hvr-sweep-to-top {
+  display: flex;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-top:before {
+  border-radius: 10px;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2098d1;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-top:hover,
+.hvr-sweep-to-top:focus,
+.hvr-sweep-to-top:active {
+  color: white;
+}
+.hvr-sweep-to-top:hover:before,
+.hvr-sweep-to-top:focus:before,
+.hvr-sweep-to-top:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+}
