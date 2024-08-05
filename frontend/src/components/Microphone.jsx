@@ -145,7 +145,7 @@ const Microphone = ({ user, socket, idGroup, darkMode }) => {
     return () => {
       micBtn.removeEventListener("click", toggleMic);
     };
-  }, [user, socket, idGroup]);
+  }, [idGroup, user]);
 
   return (
     <main>
@@ -153,9 +153,19 @@ const Microphone = ({ user, socket, idGroup, darkMode }) => {
         id="container-playback"
         className="hidden absolute right-0 -top-28 bg-zinc-600 rounded-md shadow p-5 justify-center gap-5 items-center"
       >
-        <MdDelete id="delete-audio-btn" size={25} color="white" className="cursor-pointer" />
+        <MdDelete
+          id="delete-audio-btn"
+          size={25}
+          color="white"
+          className="cursor-pointer"
+        />
         <audio controls id="playback"></audio>
-        <IoMdSend id="send-audio-btn" size={25} color="white" className="cursor-pointer" />
+        <IoMdSend
+          id="send-audio-btn"
+          size={25}
+          color="white"
+          className="cursor-pointer"
+        />
       </div>
 
       <FaMicrophone

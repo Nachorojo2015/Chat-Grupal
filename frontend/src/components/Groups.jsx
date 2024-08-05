@@ -16,7 +16,6 @@ const Groups = ({ user, socket }) => {
   useEffect(() => {
     socket.on("groups", (data) => {
       if (data) {
-        console.log(data);
         setGroups(
           data.filter((group) =>
             group.users.every((u) => u["user"] !== user._id)
@@ -62,7 +61,7 @@ const Groups = ({ user, socket }) => {
               ? "Tus Grupos"
               : "No tienes nigún grupo creado"}
           </p>
-          <section className="p-2 grid xl:grid-cols-3 grid-cols-1 justify-cemter gap-5 overflow-auto">
+          <section className="p-2 grid grid-cols-3 gap-5 overflow-auto">
             {myGroups.map((group, index) => (
               <div
                 className={`${
@@ -115,7 +114,7 @@ const Groups = ({ user, socket }) => {
               No hay más grupos en este momento
             </p>
           )}
-          <section className="p-2 grid grid-cols-3 justify-cemter gap-5">
+          <section className="p-2 grid grid-cols-3 gap-5">
             {groups.map((group, index) => (
               <div
                 className={`${

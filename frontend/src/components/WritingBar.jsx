@@ -36,9 +36,9 @@ const WritingBar = ({ socket, user, idGroup, darkMode }) => {
     }
   }
 
-  function isWriting(e) {
-    setMessage(e.target.value);
-    if (e.target.value.length !== 0) {
+  function isWriting() {
+    setMessage(inputMessage.current.value);
+    if (inputMessage.current.value.length > 0) {
       setShowSendMessage(true);
     } else {
       setShowSendMessage(false);
@@ -51,8 +51,9 @@ const WritingBar = ({ socket, user, idGroup, darkMode }) => {
       <textarea
         className={`w-[90%] outline-none overflow-hidden h-5 bg-transparent border-b resize-none text-sm ${darkMode ? "text-white" : ''}`}
         placeholder="Escribe un mensaje"
-        onKeyDown={isWriting}
         ref={inputMessage}
+        onKeyDown={sendMessage}
+        onChange={isWriting}
         id="message"
       ></textarea>
       <div className="absolute right-2 top-3">

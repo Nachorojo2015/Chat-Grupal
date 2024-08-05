@@ -69,7 +69,7 @@ const MenuChats = ({ user, socket }) => {
         darkMode ? "bg-black" : "bg-white"
       } bg-opacity-95 flex flex-col border-r`}
     >
-      <div className="flex items-center gap-5 p-[22px]">
+      <div className="flex items-center gap-2 p-[22px]">
         <FaUsers size={30} color={darkMode ? "white" : ""} />
         <div>
           <p

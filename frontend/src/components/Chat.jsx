@@ -32,7 +32,7 @@ const Chat = ({ user, socket }) => {
 
   return (
     <section className="flex-col items-center relative hidden" id="chat">
-      {/* Cabeza del chat. Musetra los datos del grupo */}
+      {/* Cabeza del chat. Muestra los datos del grupo */}
       <header
         className={`flex justify-between w-full items-center gap-5 p-3 ${
           darkMode ? "bg-black" : "bg-white"

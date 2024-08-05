@@ -45,7 +45,7 @@ export default function Home() {
   }, [socket]);
 
   return (
-    <main className="grid h-dvh xl:grid-cols-[5%,25%,70%] grid-cols-[0%,100%,0%]" id="main-container">
+    <main className="grid h-dvh grid-cols-[5%,25%,70%]" id="main-container">
       {/* User  Profile */}
       <User user={user} />
       {/* _____________ */}
