@@ -68,7 +68,7 @@ const Chat = ({ user, socket }) => {
       </header>
       {/*  Mensajes del grupo */}
       <section
-        className={`flex-1 w-full relative ${
+        className={`flex-1 w-full relative px-3 ${
           darkMode ? "bg-black" : ""
         } border-t bg-opacity-90`}
       >

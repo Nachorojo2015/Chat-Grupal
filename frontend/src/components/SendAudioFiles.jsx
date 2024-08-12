@@ -7,16 +7,12 @@ import { FaFileAudio } from "react-icons/fa6";
 import { useGroupStore } from "@/store/groupStore";
 
 const SendAudioFiles = ({ socket, user, idGroup }) => {
+  // Audio Input
   const audioRef = useRef(null);
 
-  const handleAudio = () => {
-    document.getElementById("extras-chat").classList.add("invisible");
-    audioRef.current.click();
-  };
-
   const handleAudioFiles = async () => {
-    // Recuperar la fila subida
-    const audioFile = Object.values(audioRef.current.files)[0];
+    // Filas del Input Audio
+    const [audioFile] = Object.values(audioRef.current.files);
 
     // Crear Formulario para subir la fila tipo audio
     const formData = new FormData();
@@ -53,7 +49,7 @@ const SendAudioFiles = ({ socket, user, idGroup }) => {
         socket.emit("newMessage", { data, idGroup });
         socket.on("messages", (messages) => {
           useGroupStore.getState().setMessages(messages);
-        })
+        });
       } else {
         alert("Error al subir el archivo");
       }
@@ -62,20 +58,17 @@ const SendAudioFiles = ({ socket, user, idGroup }) => {
     }
   };
   return (
-    <p
-      className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200"
-      onClick={handleAudio}
-    >
+    <label className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200">
       <FaFileAudio />
       Audio
       <input
         type="file"
         ref={audioRef}
-        className="hidden"
+        hidden
         onChange={handleAudioFiles}
         accept=".mp3,.flac,.ogg"
       />
-    </p>
+    </label>
   );
 };
 

@@ -7,16 +7,12 @@ import { SiFiles } from "react-icons/si";
 import { useGroupStore } from "@/store/groupStore";
 
 const Files = ({ socket, user, idGroup }) => {
+  // Fila Input
   const fileInputRef = useRef(null);
 
-  const handleFileInput = () => {
-    document.getElementById("extras-chat").classList.add("invisible");
-    fileInputRef.current.click();
-  };
-
   const handleFilesSelected = async () => {
-    const file = Object.values(fileInputRef.current.files)[0];
-    console.log(file);
+    // Filas del Input
+    const [file] = Object.values(fileInputRef.current.files);
 
     // Se crea un formData para subir la fila
     const formData = new FormData();
@@ -63,20 +59,17 @@ const Files = ({ socket, user, idGroup }) => {
   };
 
   return (
-    <p
-      className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200"
-      onClick={handleFileInput}
-    >
+    <label className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200">
       <SiFiles />
       Files
       <input
         type="file"
         ref={fileInputRef}
-        className="hidden"
+        hidden
         onChange={handleFilesSelected}
         accept=".pdf,.doc,.docx,.txt"
       />
-    </p>
+    </label>
   );
 };
 

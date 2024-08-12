@@ -80,7 +80,7 @@ const CreateGroup = ({ socket, user }) => {
         <input
           type="file"
           accept=".jpg,.png,.webp"
-          className="hidden"
+          hidden
           ref={pictureGroup}
           onChange={handlePictureSelected}
         />

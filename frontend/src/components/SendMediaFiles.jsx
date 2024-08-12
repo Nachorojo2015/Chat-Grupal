@@ -7,16 +7,12 @@ import { AiFillPicture } from "react-icons/ai";
 import { useGroupStore } from "@/store/groupStore";
 
 const MediaFiles = ({ socket, user, idGroup }) => {
-  // Photos or audio
+  // Fotos o Videos Input
   const photoOrVideoRef = useRef(null);
 
-  const handlePhotoOrVideo = () => {
-    document.getElementById("extras-chat").classList.add("invisible");
-    photoOrVideoRef.current.click();
-  };
-
   const handlePhotoOrVideoSelected = async () => {
-    const photosOrVideosFiles = Object.values(photoOrVideoRef.current.files)[0];
+    // Filas del Input
+    const [photosOrVideosFiles] = Object.values(photoOrVideoRef.current.files);
 
     // Crear formData para subir la fila
     const formData = new FormData();
@@ -52,7 +48,7 @@ const MediaFiles = ({ socket, user, idGroup }) => {
             : "video",
           value: `http://localhost:8080/uploads/media/${name}.${typeMediaFile}`,
         };
-        socket.emit("newMessage", {data, idGroup});
+        socket.emit("newMessage", { data, idGroup });
         socket.on("messages", (messages) => {
           useGroupStore.getState().setMessages(messages);
         });
@@ -65,20 +61,17 @@ const MediaFiles = ({ socket, user, idGroup }) => {
   };
 
   return (
-    <p
-      className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200"
-      onClick={handlePhotoOrVideo}
-    >
+    <label className="hvr-sweep-to-top items-center gap-2 cursor-pointer rounded-md p-1 transition-all duration-200">
       <AiFillPicture />
       Photos or videos
       <input
         type="file"
         ref={photoOrVideoRef}
-        className="hidden"
+        hidden
         onChange={handlePhotoOrVideoSelected}
         accept=".jpg,.png,.gif,.webp,.mp4"
       />
-    </p>
+    </label>
   );
 };
 
